@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SignUp Form</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 0 10px;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url("https://images.hindustantimes.com/img/2022/08/15/550x309/Loki_and_Sylvie_1660563704241_1660563715788_1660563715788.jpg"), #000;
+  background-position: center;
+  background-size: cover;
+}
+
+.wrapper {
+  width: 400px;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #090202;
+}
+
+.input-field {
+  position: relative;
+  border-bottom: 2px solid #ccc;
+  margin: 15px 0;
+}
+
+.input-field label {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  color: #0f0e0e;
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.15s ease;
+}
+
+.input-field input {
+  width: 100%;
+  height: 40px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #190101;
+}
+
+.input-field input:focus~label,
+.input-field input:valid~label {
+  font-size: 0.8rem;
+  top: 10px;
+  transform: translateY(-120%);
+}
+
+.forget {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 25px 0 35px 0;
+  color: #110101;
+}
+
+#remember {
+  accent-color: #060101;
+}
+
+.forget label {
+  display: flex;
+  align-items: center;
+}
+
+.forget label p {
+  margin-left: 8px;
+}
+
+.wrapper a {
+  color: #1a0202;
+  text-decoration: none;
+}
+
+.wrapper a:hover {
+  text-decoration: underline;
+}
+
+button {
+  background: #fff;
+  color: #000;
+  font-weight: 600;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 16px;
+  border: 2px solid transparent;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  color: #fff;
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.register {
+  text-align: center;
+  margin-top: 30px;
+  color: #070707;
+}
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <form id="signupForm">
+      <h2>SignUp</h2>
+      <div class="input-field">
+        <input type="text" id="fullName" required>
+        <label>Enter your name</label>
+      </div>
+      <div class="input-field">
+        <input type="email" id="email" required>
+        <label>Enter your email</label>
+      </div>
+
+      <div class="input-field">
+        <input type="text" id="username" required>
+        <label>User Name</label>
+      </div>
+      <div class="input-field">
+        <input type="password" id="password" required>
+        <label>Password</label>
+      </div>
+      <div class="input-field">
+        <input type="password" id="confirmPassword" required>
+        <label>Confirm Password</label>
+      </div>
+    
+    
+      <button type="button" onclick="register()">Register</button>
+      <div class="register">
+        <p>Do you have an account? <a href="http://127.0.0.1:8000/login/">Login</a></p>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function register() {
+      var fullName = document.getElementById('fullName').value;
+      var email = document.getElementById('email').value;
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+      var confirmPassword = document.getElementById('confirmPassword').value;
+
+      // Simple validation
+      if (fullName === '' || email === '' || username === '' || password === '' || confirmPassword === '') {
+        alert('All fields must be filled out');
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        alert('Passwords do not match');
+        return;
+      }
+
+      // Additional validation or registration logic can be added here
+
+      // Redirect to home page after successful registration
+      window.location.href = 'http://127.0.0.1:8000/login/';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-align: center;
+            background-image: url('https://img.mensxp.com/media/content/2020/Sep/Interesting-Facts-About-Mens-Fashion-740x500-5_5f5b31603d058.jpeg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        h1 {
+            color: #000000;
+            margin-top: 20px;
+        }
+
+        ol {
+            list-style-type: none;
+            background-color: #fff;
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 400px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>ORDERS PAGE</h1>
+    {% for i in data %}
+    <ol>
+        <li>Title:{{ i.product.title }}</li>
+        <li>Price:{{ i.product.price }}</li>
+        <li>rating:{{ i.product.rating }}</li>
+    </ol>
+    {% endfor %}
+    <button onclick="location.href='http://127.0.0.1:8000/products/'">Goto Products</button>
+</body>
+
+</body>
+</html>

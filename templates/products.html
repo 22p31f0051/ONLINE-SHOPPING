@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VASP</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-align: center;
+            background-image: url('https://www.hindustantimes.com/ht-img/img/2023/08/11/550x309/nimble-made-SY0mVo-MRQ8-unsplash_1691720022640_1691720057010.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100%;
+            
+        }
+
+        h1 {
+            color: #000000;
+            margin-top: 20px;
+        }
+
+        ol {
+            list-style-type: none;
+            background-color: #fff;
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 400px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>PRODUCTS PAGE</h1>
+    {% for i in data %}
+    <ol>
+        <li>Title:{{i.title}}</li>
+        <li>Price:{{i.price}}</li>
+        <li>Rating:{{i.rating}}</li>
+    </ol>
+    {% endfor %}
+    <button onclick="location.href='http://127.0.0.1:8000/home/adds'">Shop Now</button>
+</body>
+
+</html>

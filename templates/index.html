@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>VASP</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+        
+        body{
+            height: 100%;
+        }
+        
+        /* Header */
+        
+        .menu-btn{
+            color: #130d1e;
+            font-size:  23px;
+            cursor: pointer;
+            display: none;
+        }
+        
+        .navbar{
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0%;
+            z-index: 999;
+            background-color: #f3f4f6;
+            box-shadow: 0 0 14px rgba(245, 7, 7, 0.3);
+        }
+        
+        .navbar .logo h1{
+            color: #424144;
+            border-bottom: 4px solid #fd6561;
+        }
+        
+        .navbar .menu li{
+            list-style: none;
+            display: inline-block;
+            margin-left: 20px;
+            color: #08070a;
+            border-bottom: 4px solid transparent;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .navbar .menu li .active{
+            border-bottom: 4px solid #f63e4e;
+        }
+        
+        .navbar .menu li a i{
+            color: #f63e4e
+        }
+        
+        .navbar .menu li a:hover {
+            border-bottom: 4px solid #f63e4e;
+        }
+        
+        /*content*/
+        
+        .content{
+            background-image: url(https://e1.pxfuel.com/desktop-wallpaper/207/312/desktop-wallpaper-how-to-start-an-online-store-in-india-for-your-fashion-and-apparel-business-fashion-women-clothes.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            padding: 0 5%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            color: #424144;
+            height: 90vh;
+        }
+        
+        .content p{
+            font-size: 40px;
+        }
+        
+        .content p{
+            font-size: 20px;
+            margin-top: 20px;
+        }
+        
+        .content button{
+            margin-top: 30px;
+            padding: 15px 30px;
+            border: none;
+            background: #f63e4e;
+            color: white;
+            font-size: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .pheading{
+            text-align: center;
+            margin: 50px 0;
+            color: #424144;
+        }
+        
+        
+        /*products*/
+        
+        .sec{
+            padding: 10px 5%;
+        }
+        
+        .products{
+            display:grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+        }
+        
+        .products .card{
+            width: 360px;
+            background: #f5f5f5;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            padding: 5px;
+            margin-bottom: 20px;
+        }
+        
+        
+        .products .card img{
+            height: 90%;
+            width: 100%;
+        }
+        .products .card desc{
+            padding: 5px 20px;
+            opacity: 0.8;
+        }
+        
+        .products .card .title{
+            font-weight: 900;
+            font-size: 20px;
+            color: #424144;
+            padding: 0 20px;
+        }
+        
+        
+        .products .card .box{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        
+        .products .card .box .price{
+        color: #f63e4e;
+        font-size: 20px;
+        font-weight: bold;
+        }
+        
+        
+        .products .card .box .btn{
+            font-size: 13px;
+            color: #f63e4e;
+            padding: 10px 18px;
+            font-weight: 900;
+            border: 1px solid #f63e4e;
+            border-radius: 20px;
+        }
+        
+        .products .card .box .btn:hover{
+            cursor: pointer;
+            background-color: #f63e4e;
+            color: white;
+        }
+        
+        footer{
+            background-color: #f3f4f6;
+            height: 10vh;
+        }
+        
+        footer p a {
+            
+            text-decoration: none;
+            color: #f63e4e;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 820px){
+            .menu-btn{
+                display: block;
+                z-index: 999;
+            }
+        
+            .menu-btn i.active::before{
+                content: \f00d;
+            }
+        
+            .navbar .menu{
+                position: fixed;
+                height: 100vh;
+                width: 100%;
+                left: 100%;
+                top: 0;
+                background-color: #f3f4f6;
+                text-align: center;
+                padding-top: 80px;
+                transition: all 0.3s ease;
+            }
+        
+            .navbar .menu.active{
+                left: 0;
+            }
+        
+            .navbar .menu li{
+                display: flex;
+                justify-content: center;
+            }
+        
+            .navbar .menu li a{
+                margin: 10px 0;
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><h1>VASP</h1></div>
+        <ul class="menu">
+            <li><a href="http://127.0.0.1:8000">Logout</a></li>
+            <li><a href="http://127.0.0.1:8000/orders/">Orders</a></li>
+     
+            <li><a href="http://127.0.0.1:8000/home/add">Add</a></li>
+        
+        </ul>
+        <!-- for responsive button-->
+        <div class="menu-btn">
+            <i class="fa fa-bars"></i>
+        </div>
+    </nav>
+
+    <section class="content">
+        <h1>New Arrivals For Men & Women</h1>
+        <p>Get The Best Women Fashion Arrivals</p>
+        <button onclick="location.href='http://127.0.0.1:8000/products/'">Shop Now</button>
+    </section>
+
+    <h1 class="pheading">Our Latest Products</h1>
+
+    <section class="sec">
+        <div class="products">
+
+            <!-- card -->
+            <div class="card">
+                <div class="img"><img src="https://m.media-amazon.com/images/I/71fnXiI3mlL._SY695_.jpg" alt=""></div>
+                <div class="desc">Women</div>
+                <div class="title">Lady Sandal</div>
+                <div class="box">
+                    <div class="price">Rs.1000</div>
+                    
+                </div>
+            </div>
+            <!-- card end-->
+            
+            <!-- card -->
+            <div class="card">
+                <div class="img"><img src="https://m.media-amazon.com/images/I/51SFDwS9PzL._SX679_.jpg" alt=""></div>
+                <div class="desc">Men</div>
+                <div class="title">Regular Fit Coat Style Casual Shirt</div>
+                <div class="box">
+                    <div class="price">Rs.2200</div>
+                 
+                </div>
+            </div>
+            <!-- card end-->
+            
+            <!-- card -->
+            <div class="card">
+                <div class="img"><img src="https://m.media-amazon.com/images/I/61By04z9wpL._SX679_.jpg" alt=""></div>
+                <div class="desc">Women</div>
+                <div class="title">Neck Half Sleeve Regular Fit Printed T-Shirt</div>
+                <div class="box">
+                    <div class="price">Rs.2500</div>
+                  
+                </div>
+            </div>
+            <!-- card end-->
+            
+            <!-- card -->
+            <div class="card">
+                <div class="img"><img src="data:image/jpeg;base64,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" alt=""></div>
+                <div class="desc">Men</div>
+                <div class="title">Stylish</div>
+                <div class="box">
+                    <div class="price">Rs.5550</div>
+              
+                </div>
+            </div>
+            <!-- card end-->
+            
+            <!-- card -->
+            <div class="card">
+                <div class="img"><img src="https://m.media-amazon.com/images/I/418Uu3TxxPL._SX569_.jpg" alt=""></div>
+                <div class="desc">Women</div>
+                <div class="title"> Men Shirt</div>
+                <div class="box">
+                    <div class="price">Rs.1200</div>
+                   
+                </div>
+            </div>
+            <!-- card end-->
+            
+            <!-- card -->
+            <div class="card">
+                <div class="img"><img src="https://m.media-amazon.com/images/I/61Zjr852N3L._SY879_.jpg" alt=""></div>
+                <div class="desc">Men</div>
+                <div class="title">Men Style</div>
+                <div class="box">
+                    <div class="price">Rs.2250</div>
+             
+                </div>
+            </div>
+            <!-- card end-->
+            
+            <!-- card -->
+            <div class="card">
+                <div class="img"><img src="https://www.jiomart.com/images/product/original/rvrphc1hx8/nibosi-watches-men-sport-quartz-watches-waterproof-wrist-watch-three-eye-solid-leather-belt-watch-product-images-rvrphc1hx8-0-202212311628.jpg?im=Resize=(500,630)" alt=""></div>
+                <div class="desc">Men</div>
+                <div class="title">Men Watch</div>
+                <div class="box">
+                    <div class="price">Rs.2500</div>
+                    
+                </div>
+            </div>
+            <!-- card end-->
+            
+            <!-- card -->
+            <div class="card">
+                <div class="img"><img src="https://m.media-amazon.com/images/I/91zvsjtEEDL._SX679_.jpg" alt=""></div>
+                <div class="desc">Women</div>
+                <div class="title">StyleDose</div>
+                <div class="box">
+                    <div class="price">Rs.5000</div>
+                    
+                </div>
+            </div>
+            <!-- card end-->
+
+        </div>
+    </section>
+    <footer>
+        <p align="center">Copyrights at <a href="">VASP</a></p>
+    </footer>
+
+    <!-- jquery-->
+    <script>
+        $(".menu-btn").click(function(){
+        $(".navbar .menu").toggleClass("active")
+        $(".menu-btn i").toggleClass("active")
+    })
+    </script>
+</body>
+</html>
